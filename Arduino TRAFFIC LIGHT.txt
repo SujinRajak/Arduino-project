@@ -1,0 +1,86 @@
+//....................................................................T.R.A.F.F.I.C..............L.I.G.H.T....................................................................................//
+
+/*GLOBALLY DECLARED VARIABLES*/
+int pin1 = 2;
+int pin2 = 3;
+int pin3 = 4;
+int pin4 = 5;
+int pin5 = 6;
+int pin6 = 7;
+int pin7 = 8;
+int pin8 = 9;
+int pin9 = 10;
+int pin10 = 11; 
+int pin11 = 12;
+int pin12 = 13;
+int WaitTime1 = 9000; //wait time for  LEFT,RIGHT RED LIGHT and TOP,DOWN GREEN LIGTH to TURN OFF
+int WaitTime2 = 9000; //wait time for  TOP,DOWN YELLOW LIGHT and LEFT,RIGTH RED LIGHT to TURN OFF 
+int WaitTime3 = 9000; //wait time for  LEFT,RIGTH GREEN LIGHT and TOP,DOWN RED LIGTH to TURN OFF
+int WaitTime4 = 9000; //Wait time for LEFT,RIGHT YELLOW LIGTH and TOP,DOWN RED LIGTH to TURN OFF
+
+/*takes pin desciption INPUT if READING from the pin,OUTPUT if 
+ WRITING from the pin since we are WRITING to it so OUTPUT*/
+void setup() 
+{
+  pinMode (pin1, OUTPUT);
+  pinMode (pin2, OUTPUT);
+  pinMode (pin3, OUTPUT);
+  pinMode (pin4, OUTPUT);
+  pinMode (pin5, OUTPUT);
+  pinMode (pin6, OUTPUT);
+  pinMode (pin7, OUTPUT);
+  pinMode (pin8, OUTPUT);
+  pinMode (pin9, OUTPUT);
+  pinMode (pin10, OUTPUT);
+  pinMode (pin11, OUTPUT);
+  pinMode (pin12, OUTPUT);
+ }
+
+/* place where reapeated statement is placed */
+void loop() 
+{
+/*At first as shown in the figure TOP GREEN and DOWN GREEN and
+  LEFT RED and RIGHT RED is turned ON*/
+digitalWrite(pin3,HIGH);//TOP GREENLED
+digitalWrite(pin10,HIGH);//DOWN GREENLED
+digitalWrite(pin9,HIGH);//LEFT REDLED
+digitalWrite(pin4,HIGH);//RIGHT REDLED
+delay(WaitTime1);
+
+/*Again in the second figure TOP YELLOW LIGHT and DOWN YELLOW  
+  LIGHT is turned ON but LEFT RED LIGHT and RIGHT RED is still
+  the ON but the TOP GREEN LED is OFF  */
+digitalWrite(pin3,LOW);//TOP GREENLED
+digitalWrite(pin10,LOW);//DOWN GREENLED
+digitalWrite(pin2,HIGH);//TOP YELLOWLED 
+digitalWrite(pin11,HIGH); //DOWN YELLOWLED
+digitalWrite(pin10,HIGH);//LEFT REDLED
+digitalWrite(pin4,HIGH);//RIGHT REDLED
+delay(WaitTime2);
+
+/*Again as shown in the picture LEFT GREEN LIGHT and RIGHT GREEN 
+  LIGHT is ON and TOP RED LIGHT and DOWN RED is ON and TOP YELLOW LIGHT and 
+  DOWN YELLOW and LEFT RED LIGHT and RIGHT RED LIGHT is OFF */
+digitalWrite(pin2,LOW);//TOP YELLOWLED
+digitalWrite(pin11,LOW);//DOWN YELLOWLED
+digitalWrite(pin1,HIGH);//TOP REDLED 
+digitalWrite(pin12,HIGH); //DOWN REDLED
+digitalWrite(pin7,HIGH);//LEFT GREENLED
+digitalWrite(pin6,HIGH);//RIGHT GREENLED
+delay(WaitTime3); 
+
+/*Again at last RED LIGHT will be the ON but the GREEN LIGHT will be TURNED OFF and instead of GREEN LIGTH,YELlOW LIGHT will get TURNED ON  */
+digitalWrite(pin8,HIGH);//LEFT YELLOWLED
+digitalWrite(pin5,HIGH);//RIGTH YELLOWLED
+digitalWrite(pin1,HIGH);//TOP REDLED 
+digitalWrite(pin12,HIGH); //DOWN REDLED
+digitalWrite(pin7,LOW);//LEFT GREENLED
+digitalWrite(pin6,LOW);//RIGHT GREENLED
+delay(WaitTime4);
+
+/* since the looping will again start so all the lights need to be TURNED OFF so */
+digitalWrite(pin8,LOW);//LEFT YELLOWLED
+digitalWrite(pin5,LOW);//RIGTH YELLOWLED
+digitalWrite(pin1,LOW);//TOP REDLED 
+digitalWrite(pin12,LOW); //DOWN REDLED
+}
